@@ -1,0 +1,33 @@
+model:
+  name: "gemma-3"
+  path: "~/.orcas/models"
+  n_ctx: 2048
+  n_gpu_layers: 0
+
+security:
+  require_confirmation: true
+  allow_sudo: true
+  allow_high_risk: false
+
+  blocked_commands:
+    - "rm -rf /"
+    - "dd if="
+    - "mkfs"
+    - ":(){ :|:& };:"
+    - "chmod -R 777 /"
+
+  blocked_patterns:
+    - 'rm\s+-rf\s+/'
+    - 'dd\s+if=/dev/'
+    - '\bformat\b.*\b/dev/'
+
+execution:
+  timeout: 300
+  max_commands_per_request: 5
+  shell: "/bin/bash"
+  stop_on_error: false
+
+logging:
+  enabled: true
+  level: "INFO"
+  file: "~/.orcas/logs/orcas.log"
