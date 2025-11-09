@@ -25,8 +25,7 @@ class CommandExecutor:
         self.security = security_validator
         self.console = Console()
 
-    def execute_commands(self, commands: List[Command]) -> List[
-        ExecutionResult]:
+    def execute_commands(self, commands: List[Command]) -> List[ExecutionResult]:
         """Execute a list of commands with user approval."""
         results = []
 
